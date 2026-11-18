@@ -17,7 +17,7 @@ def consultar_motobot(pregunta, historial=None):
             mensajes.append({"role":m["role"],"content":m["content"]})
     mensajes.append({"role":"user","content":pregunta})
     r = client.chat.completions.create(
-        model=os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile"),
+        model=os.getenv("GROQ_MODEL", "openai/gpt-oss-20b"),
         messages=mensajes, temperature=0.2, max_tokens=3500,
     )
     return r.choices[0].message.content
